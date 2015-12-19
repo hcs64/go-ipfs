@@ -396,7 +396,7 @@ func (adder *Adder) addFile(file files.File) error {
 func (adder *Adder) addDir(dir files.File) error {
 	log.Infof("adding directory: %s", dir.FileName())
 
-	err := mfs.Mkdir(adder.mr, dir.FileName(), true)
+	err := mfs.Mkdir(adder.mr, dir.FileName(), true, false)
 	if err != nil {
 		return err
 	}
