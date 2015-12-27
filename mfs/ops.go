@@ -89,6 +89,10 @@ func lookupDir(r *Root, path string) (*Directory, error) {
 // PutNode inserts 'nd' at 'path' in the given mfs
 func PutNode(r *Root, path string, nd *dag.Node) error {
 	dirp, filename := gopath.Split(path)
+	err := Mkdir(r, dirp, true)
+	if err != nil {
+		return err
+	}
 
 	pdir, err := lookupDir(r, dirp)
 	if err != nil {
